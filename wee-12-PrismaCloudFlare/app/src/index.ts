@@ -14,7 +14,7 @@
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 
-const DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMTI0NzAwOWQtZDlkMi00ODNjLWFlZDEtMzY3ZjkzYzM3NTQ1IiwidGVuYW50X2lkIjoiZWVlZmJjOWE1NWUyNTk4NjJiYzEyY2EwZDhkNGMxOGMxNzUzNDViNGYzYzI1ZWZmZmMzYzY3MTVmMzMwZDM4ZiIsImludGVybmFsX3NlY3JldCI6ImNhNjM3YWVlLTllZTktNDEwOC1hMTNiLTk0ZTJlZjZhNDc2YyJ9.W8yEqSs7R_hTJLuTii9ScgoVngPolNHkk2vVxY9zKPU"
+
 
 export interface Env{
 	DATABASE_URL: string
@@ -26,7 +26,7 @@ export default {
 		ctx: ExecutionContext
 	): Promise<Response> {
 		const prisma = new PrismaClient({
-			datasourceUrl:DATABASE_URL
+			datasourceUrl:env.DATABASE_URL
 		}).$extends(withAccelerate())
 		
 
